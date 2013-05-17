@@ -420,7 +420,7 @@ Called when timezone information is available.
 Note that the `unixtime` is accurate as of the phone receiving and processing the message; not as of the time this
 callback occurs. That said, there is usually no discernable latency between the two events.
 
-Pable API: Location
+Pebble API: Location
 -------------------
 
 The location API enables your application to determine a once-off reasonably accurate location for the user. The
