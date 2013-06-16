@@ -105,6 +105,21 @@ Pebble API: General
 
 This section describes methods relevant to all parts of httpebble.
 
+If you have not set buffer sizes in your `PebbleAppHandlers` struct, the majority of these methods will return `HTTP_BUSY`, eg:
+
+```c
+PebbleAppHandlers handlers = {
+    ...
+    .messaging_info = {
+        .buffer_sizes = {
+            .inbound = 124,
+            .outbound = 124,
+        }
+    },
+    ...
+};
+```
+
 ### Methods
 
 #### http_set_app_id(int32_t app_id)
