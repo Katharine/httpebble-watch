@@ -94,6 +94,8 @@ Values in the dictionary may be specified as follows:
         - `'S'` – unsigned 16-bit integer
         - `'i'` – signed 32-bit integer
         - `'I'` – unsigned 32-bit integer
+- Binary data may be specified as a tuple like so:
+    - \[`d`, base64-encoded-data\]
 
 Here is a sample valid response message:
 
