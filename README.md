@@ -1,3 +1,8 @@
+Deprecation Warning
+====
+
+httpebble has been superceded by [PebbleKit JS](https://developer.getpebble.com/2/guides/javascript-guide.html) in SDK 2.0; please use that instead.
+
 httpebble
 =========
 
