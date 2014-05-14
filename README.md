@@ -33,7 +33,7 @@ A [sample watch face](http://builds.cloudpebble.net/2/7/2702284fdcbf4212a1c0baa1
 been built using httpebble, demonstrating HTTP requests and location determination.
 It replicates one of the watch faces found on getpebble.com, but never made available:
 
-![](http://i.imgur.com/SOujils.jpg)  
+![](http://i.imgur.com/SOujils.jpg)
 
 The source can be found [here](https://github.com/Katharine/WeatherWatch). It will automatically determine your location using your
 phone's GPS.
@@ -111,6 +111,21 @@ Pebble API: General
 -------------------------
 
 This section describes methods relevant to all parts of httpebble.
+
+If you have not set buffer sizes in your `PebbleAppHandlers` struct, the majority of these methods will return `HTTP_BUSY`, eg:
+
+```c
+PebbleAppHandlers handlers = {
+    ...
+    .messaging_info = {
+        .buffer_sizes = {
+            .inbound = 124,
+            .outbound = 124,
+        }
+    },
+    ...
+};
+```
 
 ### Methods
 
@@ -219,7 +234,7 @@ the cookie is recommended.
 Called when an HTTP request fails, on a best-effort basis. Requests may fail without any warning.
 
 - `cookie` will be either the cookie provided to `http_out_get` (if it could be retrieved) or zero.
-- `http_status` will be the HTTP status code returned by the server if the request was made at all, or 
+- `http_status` will be the HTTP status code returned by the server if the request was made at all, or
   an `HTTPResult` code plus 1000. You can check which by comparing against 1000.
 - `context` is the value provided in `http_register_callbacks`.
 
@@ -260,12 +275,12 @@ This method sets the given key to an integer of width `1`, `2` or `4` bytes, sig
 
 #### http_cookie_set_int…
 
-`HTTPResult http_cookie_set_int32(uint32_t request_id, uint32_t key, int32_t value);`  
-`HTTPResult http_cookie_set_uint32(uint32_t request_id, uint32_t key, uint32_t value);`  
-`HTTPResult http_cookie_set_int16(uint32_t request_id, uint32_t key, int16_t value);`  
-`HTTPResult http_cookie_set_uint16(uint32_t request_id, uint32_t key, uint16_t value);`  
-`HTTPResult http_cookie_set_int8(uint32_t request_id, uint32_t key, int8_t value);`  
-`HTTPResult http_cookie_set_uint8(uint32_t request_id, uint32_t key, uint8_t value);`  
+`HTTPResult http_cookie_set_int32(uint32_t request_id, uint32_t key, int32_t value);`
+`HTTPResult http_cookie_set_uint32(uint32_t request_id, uint32_t key, uint32_t value);`
+`HTTPResult http_cookie_set_int16(uint32_t request_id, uint32_t key, int16_t value);`
+`HTTPResult http_cookie_set_uint16(uint32_t request_id, uint32_t key, uint16_t value);`
+`HTTPResult http_cookie_set_int8(uint32_t request_id, uint32_t key, int8_t value);`
+`HTTPResult http_cookie_set_uint8(uint32_t request_id, uint32_t key, uint8_t value);`
 
 These are helper methods for the above `http_cookie_set`.
 
